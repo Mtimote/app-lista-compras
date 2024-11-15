@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="centered-title">Iniciar Sesion</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="registService.formRegis" (ngSubmit)="regist()"> 
+        <ion-item> 
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <!-- <ion-label position="floating">Correo</ion-label>  -->
+          <ion-input type="email"  formControlName="username"></ion-input> 
+        </ion-item>
+        <div *ngIf="registService.formRegis.controls['username'].invalid && registService.formRegis.controls['username'].touched"> 
+          <small *ngIf="registService.formRegis.controls['username'].errors?.['required']">El Correo es requerido.</small> 
+          <small *ngIf="registService.formRegis.controls['username'].errors?.['pattern']">Formato no válido para el correo.</small>
+        </div>
+        <ion-item>
+          <ion-icon name="eye-off-outline" slot="start"></ion-icon>
+          <!-- <ion-label position="floating">Contraseña</ion-label> -->
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <div *ngIf="registService.formRegis.controls['password'].invalid && registService.formRegis.controls['password'].touched">
+          <small *ngIf="registService.formRegis.controls['password'].errors?.['required']">Se requiere la contraseña</small>
+          <small *ngIf="registService.formRegis.controls['password'].errors?.['minlength']">la contraseña debe contar minimo con 6 caracteres</small>
+        </div>
+
+        <ion-item>
+          <ion-icon name="eye-off-outline" slot="start"></ion-icon>
+          <!-- <ion-label position="floating">Contraseña</ion-label> -->
+          <ion-input type="passwordConfirm" formControlName="passwordConfirm"></ion-input>
+        </ion-item>
+        <div *ngIf="registService.formRegis.controls['passwordConfirm'].invalid && registService.formRegis.controls['passwordConfirm'].touched">
+          <small *ngIf="registService.formRegis.controls['passwordConfirm'].errors?.['required']">Se requiere la contraseña</small>
+          <small *ngIf="registService.formRegis.controls['passwordConfirm'].errors?.['minlength']">la contraseña debe contar minimo con 6 caracteres</small>
+        </div>
+        <ion-button expand="block" type="submit" [disabled]="registService.formRegis.invalid">Ingresar</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
