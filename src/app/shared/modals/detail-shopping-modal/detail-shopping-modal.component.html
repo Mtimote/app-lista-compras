@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ list.title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <section class="body">
+    <article>
+      <p>
+        Estado: {{ list.status ? 'Completa' : 'Incompleta' }}
+      </p>
+      <p *ngIf="list.status">
+        Fecha completada : {{ list.dateComplete | date: 'dd-mm-yyyy' }}
+      </p>
+      <p>
+        {{ list.description }}
+      </p>
+    </article>
+    <article class="article-items">
+      <p>Items:</p>
+      <ng-container *ngFor="let item of list.products">
+        <app-product-view [item]="item"></app-product-view>
+      </ng-container>
+    </article>
+  </section>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="confirm()" expand="block">Continuar</ion-button>
+</ion-footer>

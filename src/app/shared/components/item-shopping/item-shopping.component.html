@@ -1,0 +1,11 @@
+<section class="section" (click)="viewDetail()">
+  <article class="article-icon">
+    <img [src]="'/assets/icon/'+item.icon" alt="icono">
+  </article>
+  <article class="article-body">
+    <h4>
+      <strong>{{ item.title }} ({{ countItems }})</strong>
+    </h4>
+    <h5>{{ item.period }}</h5>
+  </article>
+</section>

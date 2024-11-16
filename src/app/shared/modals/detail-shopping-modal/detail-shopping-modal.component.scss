@@ -1,0 +1,13 @@
+.body {
+  padding: 5%;
+
+  .article-items {
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      margin: 0;
+    }
+  }
+}

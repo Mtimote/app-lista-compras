@@ -1,0 +1,30 @@
+<section>
+
+  <article>
+    <ion-searchbar placeholder="¿Buscas una lista?" (ionInput)="onSearchChange($event)"></ion-searchbar>
+  </article>
+
+  <article>
+    <ion-segment [(ngModel)]="selectedTab">
+      <ion-segment-button value="person">
+        <ion-label>Personales</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="shared">
+        <ion-label>Compartidas</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+    <section [ngSwitch]="selectedTab">
+      <article *ngSwitchCase="'person'">
+        <ng-container *ngFor="let item of shoppingListPerson">
+          <app-item-shopping [item]="item"></app-item-shopping>
+        </ng-container>
+      </article>
+      <article *ngSwitchCase="'shared'">
+        <ng-container *ngFor="let item of shoppingListShared">
+          <app-item-shopping [item]="item"></app-item-shopping>
+        </ng-container>
+      </article>
+    </section>
+  </article>
+</section>
