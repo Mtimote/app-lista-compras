@@ -14,8 +14,17 @@ export class ProductViewComponent {
     status: false,
     completeDate: new Date()
   }
+  checked: boolean = false;
 
   constructor() {
+  }
+
+  onCheckboxChange(event: any) {
+    console.log('Checkbox changed:', event.detail.checked);
+    if (event.detail.checked) {
+      this.item.status = true;
+      console.log('Checkbox is checked');
+    }
   }
 
 }

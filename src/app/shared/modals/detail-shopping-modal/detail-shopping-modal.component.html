@@ -30,5 +30,5 @@
   </section>
 </ion-content>
 <ion-footer>
-  <ion-button (click)="confirm()" expand="block">Continuar</ion-button>
+  <ion-button (click)="confirm()" expand="block" [disabled]="!statusList || list.status ">Completar</ion-button>
 </ion-footer>

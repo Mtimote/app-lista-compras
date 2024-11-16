@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {Shopping} from "../../models/shopping";
 
@@ -7,10 +7,23 @@ import {Shopping} from "../../models/shopping";
   templateUrl: './detail-shopping-modal.component.html',
   styleUrls: ['./detail-shopping-modal.component.scss'],
 })
-export class DetailShoppingModalComponent {
-  @Input() list: Shopping = {period: "", status: false, description: "", icon: "", products: [], title: "", type: false};
+export class DetailShoppingModalComponent implements OnInit {
+  @Input() list: Shopping = {
+    period: "",
+    status: false,
+    description: "",
+    icon: "",
+    products: [],
+    title: "",
+    type: false
+  };
+  statusList: boolean = false;
 
   constructor(private modalController: ModalController) {
+  }
+
+  ngOnInit(): void {
+    this.statusList = this.list.products.filter(i => !i.status).length === 0; 
   }
 
   cancel() {
@@ -20,6 +33,7 @@ export class DetailShoppingModalComponent {
 
   confirm() {
     console.log("OK");
+    this.list.status = true;
     this.modalController.dismiss(null, 'confirm');
   }
 }

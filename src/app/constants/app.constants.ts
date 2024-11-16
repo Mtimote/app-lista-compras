@@ -36,8 +36,9 @@ export function getProductByIndex(index: number) {
 export const defaultDataProducts: Product[] = [{
   img: "pet-bowl.png",
   count: 3,
-  title: "Comprar 3 libras comida premium",
+  title: "3 libras de comida",
   status: false,
+  price: 25000,
   completeDate: new Date()
 }, {
   img: "toys.png",

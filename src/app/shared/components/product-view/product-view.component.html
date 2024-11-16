@@ -1,4 +1,18 @@
-<section>
-
-   s
+<section class="section">
+  <article class="article-icon">
+    <img [src]="'/assets/icon/'+item.img" alt="icono">
+  </article>
+  <article class="article-body">
+    <div class="text">
+      <p>
+        <strong>{{ item.title }} </strong>
+      </p>
+      <p *ngIf="item.price">{{ item.price | currency }}</p>
+      <p *ngIf="!item.price">-</p>
+    </div>
+    <div class="actions">
+      <p><strong>Cantidad {{ item.count }}</strong></p>
+      <ion-checkbox (ionChange)="onCheckboxChange($event)" [disabled]="item.status">Validar</ion-checkbox>
+    </div>
+  </article>
 </section>
