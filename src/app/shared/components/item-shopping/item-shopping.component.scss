@@ -21,6 +21,10 @@
     display: flex;
     flex-direction: column;
 
+    .list-success {
+      text-decoration: line-through;
+    }
+
     h5 {
       margin: 0;
     }

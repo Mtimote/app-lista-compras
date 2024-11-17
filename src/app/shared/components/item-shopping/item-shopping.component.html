@@ -4,7 +4,8 @@
   </article>
   <article class="article-body">
     <h4>
-      <strong>{{ item.title }} ({{ countItems }})</strong>
+      <strong [ngClass]="{'list-success':item.dateComplete!==undefined}">
+        {{ item.title }} </strong>
     </h4>
     <h5>{{ item.period }}</h5>
   </article>

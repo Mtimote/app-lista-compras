@@ -1,0 +1,17 @@
+.article-icons {
+  gap: 10px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(4, 1fr);
+
+  .icon-inactive {
+    padding: 10%;
+    background: #f5f4f2;
+  }
+
+  .icon-select {
+    padding: 10%;
+    background: #f5d0ac;
+  }
+}

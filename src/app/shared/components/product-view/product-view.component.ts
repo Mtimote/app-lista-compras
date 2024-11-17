@@ -1,5 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+
 import {Product} from "../../models/Product";
+import {ItemOutput} from "../../models/itemOutput";
 
 @Component({
   selector: 'app-product-view',
@@ -14,16 +16,20 @@ export class ProductViewComponent {
     status: false,
     completeDate: new Date()
   }
+  @Output() dataEvent = new EventEmitter<ItemOutput>();
+
   checked: boolean = false;
 
   constructor() {
   }
 
   onCheckboxChange(event: any) {
-    console.log('Checkbox changed:', event.detail.checked);
     if (event.detail.checked) {
       this.item.status = true;
-      console.log('Checkbox is checked');
+      this.dataEvent.emit({
+        status: true,
+        title: this.item.title
+      });
     }
   }
 

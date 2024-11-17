@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Shopping} from "../../models/shopping";
+import {Component, Input} from '@angular/core';
 import {ModalController} from "@ionic/angular";
+
+import {Shopping} from "../../models/shopping";
 import {DetailShoppingModalComponent} from "../../modals/detail-shopping-modal/detail-shopping-modal.component";
 
 @Component({
@@ -8,7 +9,7 @@ import {DetailShoppingModalComponent} from "../../modals/detail-shopping-modal/d
   templateUrl: './item-shopping.component.html',
   styleUrls: ['./item-shopping.component.scss'],
 })
-export class ItemShoppingComponent implements OnInit {
+export class ItemShoppingComponent {
 
   @Input() item: Shopping = {
     period: "", status: false,
@@ -18,17 +19,12 @@ export class ItemShoppingComponent implements OnInit {
     description: "",
     products: []
   };
-  countItems: number = 0;
 
   constructor(private modalController: ModalController) {
   }
 
-  ngOnInit(): void {
-   this.countItems=  this.item.products.filter(i=>!i.status).length;
-  }
 
   async viewDetail() {
-    console.log("VER DETALLE");
     const modal = await this.modalController.create({
       component: DetailShoppingModalComponent,
       componentProps: {
@@ -37,5 +33,4 @@ export class ItemShoppingComponent implements OnInit {
     });
     return await modal.present();
   }
-
 }

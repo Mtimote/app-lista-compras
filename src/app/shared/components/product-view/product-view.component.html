@@ -12,7 +12,8 @@
     </div>
     <div class="actions">
       <p><strong>Cantidad {{ item.count }}</strong></p>
-      <ion-checkbox (ionChange)="onCheckboxChange($event)" [disabled]="item.status">Validar</ion-checkbox>
+      <ion-checkbox (ionChange)="onCheckboxChange($event)" [disabled]="item.status" [checked]="item.status">Validar
+      </ion-checkbox>
     </div>
   </article>
 </section>
