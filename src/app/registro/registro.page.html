@@ -10,18 +10,26 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header>
-      <ion-card-title class="centered-title">Iniciar Sesion</ion-card-title>
+      <ion-card-title class="centered-title">Crear cuenta</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <form [formGroup]="registService.formRegis" (ngSubmit)="regist()"> 
+      <form [formGroup]="registService.formRegis" (ngSubmit)="guardar()"> 
+        <ion-item> 
+          <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+          <ion-input type="text"  formControlName="name"></ion-input> 
+        </ion-item>
+        <div *ngIf="registService.formRegis.controls['name'].invalid && registService.formRegis.controls['name'].touched">  
+          <small *ngIf="registService.formRegis.controls['name'].errors?.['pattern']">Formato no válido para el nombre.</small>
+          <small *ngIf="registService.formRegis.controls['name'].errors?.['required']">El Nombre es requerido.</small>
+        </div>
         <ion-item> 
           <ion-icon name="mail-outline" slot="start"></ion-icon>
           <!-- <ion-label position="floating">Correo</ion-label>  -->
           <ion-input type="email"  formControlName="username"></ion-input> 
         </ion-item>
-        <div *ngIf="registService.formRegis.controls['username'].invalid && registService.formRegis.controls['username'].touched"> 
-          <small *ngIf="registService.formRegis.controls['username'].errors?.['required']">El Correo es requerido.</small> 
+        <div *ngIf="registService.formRegis.controls['username'].invalid && registService.formRegis.controls['username'].touched">  
           <small *ngIf="registService.formRegis.controls['username'].errors?.['pattern']">Formato no válido para el correo.</small>
+          <small *ngIf="registService.formRegis.controls['username'].errors?.['required']">El Correo es requerido.</small>
         </div>
         <ion-item>
           <ion-icon name="eye-off-outline" slot="start"></ion-icon>
@@ -36,13 +44,16 @@
         <ion-item>
           <ion-icon name="eye-off-outline" slot="start"></ion-icon>
           <!-- <ion-label position="floating">Contraseña</ion-label> -->
-          <ion-input type="passwordConfirm" formControlName="passwordConfirm"></ion-input>
+          <ion-input type="password" formControlName="passwordConfirm"></ion-input>
         </ion-item>
         <div *ngIf="registService.formRegis.controls['passwordConfirm'].invalid && registService.formRegis.controls['passwordConfirm'].touched">
           <small *ngIf="registService.formRegis.controls['passwordConfirm'].errors?.['required']">Se requiere la contraseña</small>
           <small *ngIf="registService.formRegis.controls['passwordConfirm'].errors?.['minlength']">la contraseña debe contar minimo con 6 caracteres</small>
         </div>
-        <ion-button expand="block" type="submit" [disabled]="registService.formRegis.invalid">Ingresar</ion-button>
+        <div *ngIf="registService.formRegis.errors?.['passwordMismatch'] && registService.formRegis.controls['passwordConfirm'].touched"> 
+          <small>Las contraseñas no coinciden</small>
+        </div>
+        <ion-button expand="block" type="submit" [disabled]="!registService.formRegis.valid">Registrar</ion-button>
       </form>
     </ion-card-content>
   </ion-card>
