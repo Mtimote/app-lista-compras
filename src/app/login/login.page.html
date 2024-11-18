@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title class="centered-title">login</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -30,7 +30,11 @@
           <small *ngIf="LogService.formLogin.controls['password'].errors?.['minlength']">la contraseña debe contar minimo con 6 caracteres</small>
 
         </div>
-        <ion-button expand="block" type="submit" [disabled]="LogService.formLogin.invalid">Ingresar</ion-button>
+        <ion-button expand="block" type="submit" [disabled]="!LogService.formLogin.valid">Ingresar</ion-button>
+        <ion-text color="primary">
+          <a routerLink="/forgot-password">¿Olvidaste tu contraseña?</a>
+        </ion-text>
+        
       </form>    
     </ion-card-content>
   </ion-card>
@@ -45,3 +49,11 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-footer>
+
+
+
+
+
+
+
+
