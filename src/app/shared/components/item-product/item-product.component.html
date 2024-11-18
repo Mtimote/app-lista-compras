@@ -1,0 +1,13 @@
+<section class="section">
+  <article class="article-icon">
+    <img [src]="'/assets/icon/'+item.img" alt="icono">
+  </article>
+  <article class="article-body">
+    <h4>
+      <strong>
+        {{ item.title }} </strong>
+    </h4>
+    <h5>{{ item.description }}</h5>
+    <p>{{ item.price | currency }}</p>
+  </article>
+</section>

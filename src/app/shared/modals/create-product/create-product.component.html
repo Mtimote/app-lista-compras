@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Producto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="myForm">
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input formControlName="title" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input formControlName="price" type="number"></ion-input>
+    </ion-item>
+    <section>
+      <p>Escoje un icono:</p>
+      <article class="article-icons">
+        <ng-container *ngFor="let item of icons">
+          <div (click)="selectIcon(item)"
+               [ngClass]="{'icon-inactive': item!=iconSelect, 'icon-select': item===iconSelect}">
+            <img [src]="'/assets/icon/'+item" alt="icono">
+          </div>
+        </ng-container>
+      </article>
+    </section>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" type="button" (click)="save()" [disabled]="!myForm.valid">
+    Crear Producto
+  </ion-button>
+</ion-footer>

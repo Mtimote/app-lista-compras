@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {Storage} from '@ionic/storage-angular'
 
-import {defaultShoppingList} from "./constants/app.constants";
+import {defaultDataProducts, defaultShoppingList} from "./constants/app.constants";
+import {StorageServiceProduct} from "./services/StorageServiceProduct";
 import {StorageServiceShopping} from "./services/StorageServiceShopping";
 
 @Component({
@@ -15,6 +16,7 @@ export class AppComponent {
 
   constructor(private platform: Platform,
               private storageService: Storage,
+              private storageServiceProduct: StorageServiceProduct,
               private storageServiceShopping: StorageServiceShopping) {
     this.initializeApp().then();
   }
@@ -26,6 +28,7 @@ export class AppComponent {
   }
 
   async setItems() {
+    await this.storageServiceProduct.setItem(defaultDataProducts);
     await this.storageServiceShopping.setItem(defaultShoppingList());
   }
 }

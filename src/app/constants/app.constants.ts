@@ -42,30 +42,39 @@ export function getProductByIndex(index: number) {
 }
 
 export const defaultDataProducts: Product[] = [{
+  title: "3 libras de comida",
+  description: "Se compra en el supermercado",
+  price: 25000,
   img: "pet-bowl.png",
   count: 3,
-  title: "3 libras de comida",
-  status: true,
-  price: 25000
+  status: true
 }, {
+  title: "Hueso de juguete",
+  description: "Se compra en la veterinaria",
+  price: 1000,
   img: "toys.png",
   count: 2,
-  title: "Hueso de juguete",
   status: false
 }, {
+  title: "Pasear por el parque",
+  description: "Ir al parque",
+  price: 500,
   img: "leash.png",
   count: 1,
-  title: "Pasear por el parque",
   status: false
 }, {
+  title: "Reparar casa de drako",
+  description: "Ir donde drako",
+  price: 10000,
   img: "dog-kennel.png",
   count: 0,
-  title: "Reparar casa de drako",
   status: false
 }, {
+  title: "Comprar libros",
+  description: "Ir a la librería",
+  price: 5000,
   img: "credit.png",
   count: 5,
-  title: "Comprar libros",
   status: false
 }];
 
