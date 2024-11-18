@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path:'shopping',
     loadChildren: () => import('./shopping-list/shopping-list.module').then(m => m.ShoppingListModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   }
 ];
 
