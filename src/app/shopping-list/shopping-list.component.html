@@ -1,9 +1,10 @@
 <section>
-
+  <article>
+    <ion-icon name="add" (click)="addList()"></ion-icon>
+  </article>
   <article>
     <ion-searchbar placeholder="¿Buscas una lista?" (ionInput)="onSearchChange($event)"></ion-searchbar>
   </article>
-
   <article>
     <ion-segment [(ngModel)]="selectedTab">
       <ion-segment-button value="person">

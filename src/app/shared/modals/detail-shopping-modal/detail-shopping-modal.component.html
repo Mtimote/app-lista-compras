@@ -24,11 +24,8 @@
     <article class="article-items">
       <p>Items:</p>
       <ng-container *ngFor="let item of list.products">
-        <app-product-view [item]="item"></app-product-view>
+        <app-product-view (dataEvent)="handleData($event)" [item]="item"></app-product-view>
       </ng-container>
     </article>
   </section>
 </ion-content>
-<ion-footer>
-  <ion-button (click)="confirm()" expand="block" [disabled]="!statusList || list.status ">Completar</ion-button>
-</ion-footer>

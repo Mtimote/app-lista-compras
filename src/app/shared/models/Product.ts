@@ -4,5 +4,5 @@ export interface Product {
   count: number;
   price?: number;
   status: boolean;
-  completeDate: Date;
+  completeDate?: Date;
 }

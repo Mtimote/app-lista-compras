@@ -1,5 +1,13 @@
-import {Shopping} from "../shared/models/shopping";
 import {Product} from "../shared/models/Product";
+import {Shopping} from "../shared/models/shopping";
+
+export const iconsShopping: string[] = [
+  "bike.png", "book.png", "car.png", "car-shopping.png", "cat.png",
+  "cooking.png", "dog-happy.png", "dog-kennel.png", "hospital.png",
+  "leash.png", "pet-bowl.png", "plane.png", "toilet.png", "toys.png",
+  "wine.png", "credit.png", "mercado.png"
+];
+
 
 export function defaultShoppingList(): Shopping[] {
   return [{
@@ -17,7 +25,7 @@ export function defaultShoppingList(): Shopping[] {
     period: "Una sola vez",
     title: "Proyecto de grado",
     description: "Recuerda que esto es muy importante",
-    products: []
+    products: [getProductByIndex(4)]
   }, {
     type: false,
     status: false,
@@ -37,26 +45,27 @@ export const defaultDataProducts: Product[] = [{
   img: "pet-bowl.png",
   count: 3,
   title: "3 libras de comida",
-  status: false,
-  price: 25000,
-  completeDate: new Date()
+  status: true,
+  price: 25000
 }, {
   img: "toys.png",
   count: 2,
   title: "Hueso de juguete",
-  status: false,
-  completeDate: new Date()
+  status: false
 }, {
   img: "leash.png",
   count: 1,
   title: "Pasear por el parque",
-  status: false,
-  completeDate: new Date()
+  status: false
 }, {
   img: "dog-kennel.png",
   count: 0,
   title: "Reparar casa de drako",
-  status: false,
-  completeDate: new Date()
-}]
+  status: false
+}, {
+  img: "credit.png",
+  count: 5,
+  title: "Comprar libros",
+  status: false
+}];
 

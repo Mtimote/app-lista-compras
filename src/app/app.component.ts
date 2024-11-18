@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Platform} from '@ionic/angular';
+import {Storage} from '@ionic/storage-angular'
+
+import {defaultShoppingList} from "./constants/app.constants";
+import {StorageServiceShopping} from "./services/StorageServiceShopping";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +11,21 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  private storage!: Storage;
+
+  constructor(private platform: Platform,
+              private storageService: Storage,
+              private storageServiceShopping: StorageServiceShopping) {
+    this.initializeApp().then();
+  }
+
+  async initializeApp() {
+    await this.platform.ready();
+    await this.storageService.create();
+    await this.setItems();
+  }
+
+  async setItems() {
+    await this.storageServiceShopping.setItem(defaultShoppingList());
+  }
 }
