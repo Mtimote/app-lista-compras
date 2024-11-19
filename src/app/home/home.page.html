@@ -1,22 +1,37 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      App My lista de compras
+      Mi lista de compras
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-margin-top">
+      <ion-col size="12" size-md="6">
+        <ion-button
+          expand="block"
+          color="primary"
+          routerLink="/products"
+        >
+          Lista de Productos
+        </ion-button>
+      </ion-col>
+    </ion-row>
 
-  <div id="container">
-    <strong>No volveras a olvidar ningun producto</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6">
+        <ion-button
+          expand="block"
+          color="secondary"
+          routerLink="/shopping"
+        >
+          Lista de Compras
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
   <ion-footer>

@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Productos
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="add" size="large" (click)="addProduct()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <section>
+      <article>
+        <ion-searchbar placeholder="¿Buscas un Producto?" (ionInput)="onSearchChange($event)"></ion-searchbar>
+      </article>
+      <article>
+        <ng-container *ngFor="let item of filteredList">
+          <app-item-product [item]="item"></app-item-product>
+        </ng-container>
+      </article>
+    </section>
+  </div>
+</ion-content>
+
+

@@ -10,9 +10,11 @@ import {ItemOutput} from "../../models/itemOutput";
 })
 export class ProductViewComponent {
   @Input() item: Product = {
+    title: "",
+    description: "",
+    price: 0,
     img: "",
     count: 0,
-    title: "",
     status: false,
     completeDate: new Date()
   }

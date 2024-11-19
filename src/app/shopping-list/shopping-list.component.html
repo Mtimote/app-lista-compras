@@ -1,31 +1,48 @@
-<section>
-  <article>
-    <ion-icon name="add" (click)="addList()"></ion-icon>
-  </article>
-  <article>
-    <ion-searchbar placeholder="¿Buscas una lista?" (ionInput)="onSearchChange($event)"></ion-searchbar>
-  </article>
-  <article>
-    <ion-segment [(ngModel)]="selectedTab">
-      <ion-segment-button value="person">
-        <ion-label>Personales</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="shared">
-        <ion-label>Compartidas</ion-label>
-      </ion-segment-button>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Lista de compras
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="add" size="large" (click)="addList()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-    </ion-segment>
-    <section [ngSwitch]="selectedTab">
-      <article *ngSwitchCase="'person'">
-        <ng-container *ngFor="let item of shoppingListPerson">
-          <app-item-shopping [item]="item"></app-item-shopping>
-        </ng-container>
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <section>
+      <article>
+        <ion-searchbar placeholder="¿Buscas una lista?" (ionInput)="onSearchChange($event)"></ion-searchbar>
       </article>
-      <article *ngSwitchCase="'shared'">
-        <ng-container *ngFor="let item of shoppingListShared">
-          <app-item-shopping [item]="item"></app-item-shopping>
-        </ng-container>
+      <article>
+        <ion-segment [(ngModel)]="selectedTab">
+          <ion-segment-button value="person">
+            <ion-label>Personales</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="shared">
+            <ion-label>Compartidas</ion-label>
+          </ion-segment-button>
+    
+        </ion-segment>
+        <section [ngSwitch]="selectedTab">
+          <article *ngSwitchCase="'person'">
+            <ng-container *ngFor="let item of shoppingListPerson">
+              <app-item-shopping [item]="item"></app-item-shopping>
+            </ng-container>
+          </article>
+          <article *ngSwitchCase="'shared'">
+            <ng-container *ngFor="let item of shoppingListShared">
+              <app-item-shopping [item]="item"></app-item-shopping>
+            </ng-container>
+          </article>
+        </section>
       </article>
     </section>
-  </article>
-</section>
+  </div>
+</ion-content>
+
+

@@ -1,8 +1,9 @@
 export interface Product {
   img: string;
   title: string;
+  description: string;
+  price: number;
   count: number;
-  price?: number;
   status: boolean;
   completeDate?: Date;
 }
